@@ -1,0 +1,68 @@
+INSTRUÇÕES 
+
+1. Leia atentamente todas as instruções e questões; 
+
+2. O valor desta avaliação é de 10,0 pontos e a aplicação da nota segue as regras conforme os itens a seguir; 
+
+3. A nota da EQUIPE (1, 2 ou 3 membros) será a média aritmética das notas (participação dos membros no processo) com os 
+seguintes pesos: peso 60% para o código e documentação; 20% para a execução e 20% para a 
+apresentação/questionamentos; 
+
+4. A nota relativa ao código e documentação decorre criação das classes e suas interações entre elas e da documentação delas 
+através do diagrama UML do relacionamento das classes. Por ser trabalho em equipe, a documentação é importante para 
+um eficiente desenvolvimento da aplicação e particionamento (deixar claro na documentação e nos códigos qual membro 
+da equipe fez) das atividades de implementações. 
+
+5. Criar um sistema funcional responsável por gerenciar e processar informações que seja relacionada com uma necessidade 
+real de algum público (sistema de “frente de caixa" ou ponto de venda, sistema de gerenciamento de alunos, professores, 
+disciplinas, curso, aulas, entre outros); 
+
+6. O sistema deverá ser decomposto em classes, interfaces, enumerações, interfaces gráficas em Java de forma que se interajam 
+para gerir toda a aplicação. 
+
+7. O sistema deverá persistir as informações (estados dos atributos das classes) no banco de dados MySQL conforme 
+conhecimento contido no capítulo 12 do livro: 
+Furgeri, Sérgio. Java 8 - ensino didático: desenvolvimento e implementação de aplicações. São Paulo: Érica, 2015. 
+Disponível em: <https://app.minhabiblioteca.com.br/reader/books/9788536519340>. Acesso em: 10 fev. 2025.” 
+
+8. O sistema deverá ter interface gráfica e eventos usando dos conhecimentos contidos nos capítulos 8 e 9 do livro: 
+Furgeri, Sérgio. Java 8 - ensino didático: desenvolvimento e implementação de aplicações. São Paulo: Érica, 2015. 
+Disponível em: <https://app.minhabiblioteca.com.br/reader/books/9788536519340>. Acesso em: 10 fev. 2025.” 
+
+9. Descrever as classes que compõem (criam/gerenciam funcionalidades) o sistema usando diagramas UML de classes, exibindo 
+seus relacionamentos de classes, usando o software gratuito “draw.io” (https://app.diagrams.net/). Existe versão online 
+como versão desktop deste; 
+
+10. A implementação de todas as classes e processos devem ser feitos na linguagem de programação Java. Conhecimento 
+externo ao utilizado no livro, deve deixar o link do site acima do código copiado de fonte externa para não gerar um 
+Frankenstein de código sem saber de onde obteve a ideia. Acrescente um bloco de comentário no diagrama UML de classes 
+com o link; 
+
+11. O software de desenvolvimento deve ser o Eclipse IDE (https://www.eclipse.org/downloads/packages/release/2025
+03/r/eclipse-ide-java-developers) para ser compatível com a execução por parte do professor; 
+
+12. O sistema (código) deve ser hospedado em repositório de acesso público no https://github.com/ e desenvolvido pelos 
+membros da equipe,  onde cada membro/desenvolvedor deve ter a sua conta e mais uma conta para o projeto. O sistema 
+tem que ter no mínimo um branch por cada estudante e o main. A equipe deve fazer uso do github.com para fazer o 
+versionamento de código, como forma de facilitar o desenvolvimento descentralizado do código. Para entrega no trabalho 
+acrescente apenas o github do projeto da equipe, pois eu navegarei nos branchs dos membros da equipe. 
+
+13. Este trabalho com os códigos em Java, devem ser enviados compactados por produção acadêmica por apenas um estudante, 
+e na própria produção acadêmica adicionar os outros integrante da equipe. O projeto em Java (se ficar grande, enviar apenas 
+os *.java), o arquivo .drawio, o arquivo de construção da base (SQL), o arquivo de popular a base (SQL)  e a apresentação em 
+PDF devem ser enviados compactados no formato zip por produção acadêmica com o nome completo do estudante até a 
+data máxima deste documento, onde a nota será composta pelos códigos, diagrama UML e a apresentação PDF; 
+
+14. Fazer uma apresentação usando Microsoft PowerPoint ou LibreOffice Impress e converter para PDF, no qual descreve o 
+sistema e suas funcionalidades por meio de print das telas ao executar; 
+
+15. IMPORTANTE: Trabalhe com as imagens no Microsoft Paint, reduzindo-as para que elas não fiquem muito grande e com isso 
+o seu zipado não ultrapasse 10 MB permitido pela produção acadêmica; 
+PÁGINA 1 DE 2 
+
+16. A apresentação do sistema desenvolvido pela equipe, decorre da apresentação da execução da aplicação, comentários sobre 
+o desenvolvimento, sobre motivo dos respectivos relacionamentos e questões envolvendo o propósito do software. 
+IMPORTANTE: haverá questões individuais aos participantes para entender o desenvolvimento pela equipe e não por apenas 
+um dos estudantes e a nota final é a média da nota dos estudantes pela apresentação (trabalho em equipe); 
+
+17. Dúvidas ao longo do trabalho podem ser sanadas com o professor(a) ao longo das aulas; 

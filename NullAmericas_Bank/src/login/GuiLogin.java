@@ -77,8 +77,6 @@ public class GuiLogin extends JFrame {
                 		}else if(login.validarLogin(codigo,senha) == LoginStatus.USUARIO){
                 			GuiMenuUsuario.abrir();
                 			closeFrame();
-                		}else if(login.validarLogin(codigo,senha) == LoginStatus.USUARIO_NAO_VALIDADO){
-                			JOptionPane.showMessageDialog( null, "Login ou Senha incorretas!", "Informação", JOptionPane.ERROR_MESSAGE );
                 		}
             		}
             		else {

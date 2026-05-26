@@ -48,6 +48,8 @@ public class LoginDAO implements OperacaoBD{
             
             String statusString = resultSet.getString(4);
             login.setLoginStatus(LoginStatus.valueOf(statusString));
+            //Pegar referencia ************************************************************************
+            
             
             return true;
         }

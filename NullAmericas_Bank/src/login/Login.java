@@ -11,7 +11,7 @@ public class Login {
 		this.id = -1;
 		this.codigo = null;
 		this.senha = null;
-		this.loginStatus = LoginStatus.USUARIO_NAO_VALIDADO;
+		this.loginStatus = LoginStatus.NAO_VALIDADO;
 	}
 
 	public int getId() {
@@ -51,7 +51,7 @@ public class Login {
 			return this.loginStatus;
 		}
 		else {
-			return LoginStatus.USUARIO_NAO_VALIDADO;
+			return LoginStatus.NAO_VALIDADO;
 		}
 	}
 }

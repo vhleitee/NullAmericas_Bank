@@ -1,13 +1,9 @@
-package view;
+package login;
+
 import java.awt.event.*;
 import javax.swing.*;
-import enums.LoginStatus;
-
 import repository.BD;
-import model.Login;
-import repository.LoginDAO;
-import view.funcionario.GuiMenuFuncionario;
-import view.usuario.GuiMenuUsuario;
+import menu.*;
 
 public class GuiLogin extends JFrame {
 	private static final long serialVersionUID = 1L;

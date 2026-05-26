@@ -1,9 +1,11 @@
-package repository;
+package login;
+
 
 import java.sql.*;
-import enums.LoginStatus;
 
-import model.Login;
+import repository.BD;
+import repository.OperacaoBD;
+import repository.TipoOperacaoBD;
 
 public class LoginDAO implements OperacaoBD{
 	private BD bd;

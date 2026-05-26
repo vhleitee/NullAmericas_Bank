@@ -1,10 +1,12 @@
-package view.usuario;
+package menu;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class GuiMenuUsuario extends JFrame {
+public class GuiMenuFuncionario extends JFrame {
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private Container contentPane;
     private JMenuBar mnBarra;
     private JMenu mnArquivo, mnCadastro, mnAjuda;
@@ -12,13 +14,13 @@ public class GuiMenuUsuario extends JFrame {
     private JMenuItem miPessoaFisica, miPessoaJuridica, miProduto, miCompra;
     private JMenuItem miSobre;
 
-    public GuiMenuUsuario() {
+    public GuiMenuFuncionario() {
         inicializarComponentes();
         definirEventos();
     }
 
     private void inicializarComponentes() {
-        setTitle("Menu Usuario");
+        setTitle("Menu Funcionario");
         setBounds(0, 0, 800, 600);
 
         contentPane = getContentPane();
@@ -121,7 +123,7 @@ public class GuiMenuUsuario extends JFrame {
     }
 
     public static void abrir() {
-    	GuiMenuUsuario frame = new GuiMenuUsuario();
+        GuiMenuFuncionario frame = new GuiMenuFuncionario();
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
         Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();

@@ -6,10 +6,6 @@ public abstract class Usuario {
 	private LocalDate data;
 	private Endereco endereco;
 	
-	public Usuario() {
-		
-	}
-	
 	public Usuario(int id, String nome, LocalDate data, Endereco endereco) {
 		super();
 		this.id = id;

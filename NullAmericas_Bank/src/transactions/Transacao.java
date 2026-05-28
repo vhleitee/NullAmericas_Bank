@@ -1,4 +1,4 @@
-package transacao;
+package transactions;
 
 import java.time.LocalDateTime;
 

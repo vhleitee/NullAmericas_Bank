@@ -1,4 +1,7 @@
+package users;
 import java.time.LocalDate;
+
+import utils.*;
 
 public abstract class Usuario {
 	private int id;

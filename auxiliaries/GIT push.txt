@@ -1,0 +1,25 @@
+# 1. Garanta que você está na sua branch
+git checkout dev_vhleitee ou dev_simasxv ou dev_franz
+
+# 2. Adicione os arquivos alterados para o envio
+git add .
+
+# 3. Crie um commit com uma mensagem do que você fez
+git commit -m "feat: atualizando o sistema bancario"
+
+# 4. Envia para a sua branch no GitHub
+git push origin dev_vhleitee ou dev_simasxv ou dev_franz
+
+-------------------------------------------------------------------------------------------
+
+# 1. Vá para a branch main
+git checkout main
+
+# 2. Puxe o código do GitHub para garantir que sua main local está atualizada
+git pull origin main
+
+# 3. Mescle a sua branch de desenvolvimento dentro da main
+git merge dev_vhleitee ou dev_simasxv ou dev_franz
+
+# 4. Envie o resultado final da main de volta para o GitHub
+git push origin main

@@ -3,9 +3,7 @@ package transactions;
 import java.sql.*;
 
 import repository.BD;
-import repository.OperacaoBD;
 import repository.TipoOperacaoBD;
-
 
 public class TransacaoDAO {
 	private BD bd;

@@ -1,6 +1,5 @@
 package login;
 
-
 public enum LoginStatus {
 	FUNCIONARIO,
 	USUARIO,

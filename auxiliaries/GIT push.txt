@@ -12,6 +12,16 @@ cd NullAmericas_Bank
 # Substitua <sua-branch> por uma das opções do projeto: dev_vhleitee, dev_simasxv ou dev_franz
 git switch <sua-branch>
 
+---------------------------------------------------------------------------------------------
+
+## Atualizar o repositório local
+
+### 1. Selecionar sua branch
+git checkout <sua branch>
+
+### 2. Buscar na main
+git pull origin main
+
 -------------------------------------------------------------------------------------------
 
 ## Enviar para sua branch
@@ -43,3 +53,4 @@ git merge <sua-branch>
 
 ### 4. Envie o resultado final da main de volta para o GitHub
 git push origin main
+

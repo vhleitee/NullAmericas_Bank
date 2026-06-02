@@ -19,6 +19,7 @@ public class GuiLogin extends JFrame {
         definirEventos();
     }
 
+    
     private void inicializarComponentes() {
         setTitle("Login no Sistema");
         setBounds(0, 0, 250, 200);

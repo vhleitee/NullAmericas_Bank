@@ -8,8 +8,8 @@ public abstract class Conta {
 	private Cliente cliente;
 
 	public Conta(int id, double saldo, Cliente cliente) {
-		this.id = -1;
-		this.saldo = 0;
+		this.id = id;
+		this.saldo = saldo;
 		this.cliente = cliente;
 	}
 	

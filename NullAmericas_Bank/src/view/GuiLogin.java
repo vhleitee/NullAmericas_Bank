@@ -1,9 +1,10 @@
-package login;
-
+package view;
 import java.awt.event.*;
 import javax.swing.*;
-import repository.BD;
-import menu.*;
+import enums.LoginStatus;
+import model.BD;
+import model.Login;
+import repository.LoginDAO;
 
 public class GuiLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -19,7 +20,6 @@ public class GuiLogin extends JFrame {
         definirEventos();
     }
 
-    
     private void inicializarComponentes() {
         setTitle("Login no Sistema");
         setBounds(0, 0, 250, 200);

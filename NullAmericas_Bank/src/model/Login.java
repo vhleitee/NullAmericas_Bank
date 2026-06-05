@@ -1,5 +1,5 @@
-package login;
-
+package model;
+import enums.LoginStatus;
 
 public class Login {
 	private int id;

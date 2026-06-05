@@ -1,7 +1,5 @@
-package users;
+package model;
 import java.time.LocalDate;
-
-import utils.*;
 
 public abstract class Usuario {
 	private int id;

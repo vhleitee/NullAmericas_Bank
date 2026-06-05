@@ -1,4 +1,4 @@
-package utils;
+package model;
 
 public class Endereco {
 	private String pais;

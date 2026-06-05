@@ -4,7 +4,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import login.GuiLogin;
+import view.GuiLogin;
 
 public class Main {
     private static GuiLogin frame;

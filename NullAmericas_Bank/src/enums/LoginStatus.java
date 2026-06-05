@@ -1,4 +1,4 @@
-package login;
+package enums;
 
 public enum LoginStatus {
 	FUNCIONARIO,

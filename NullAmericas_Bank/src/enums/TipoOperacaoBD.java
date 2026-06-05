@@ -1,5 +1,4 @@
-package repository;
-
+package enums;
 
 public enum TipoOperacaoBD {
 	INCLUSAO,

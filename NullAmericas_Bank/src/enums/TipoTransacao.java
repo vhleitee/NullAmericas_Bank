@@ -1,4 +1,4 @@
-package transactions;
+package enums;
 
 public enum TipoTransacao {
 	SAQUE,

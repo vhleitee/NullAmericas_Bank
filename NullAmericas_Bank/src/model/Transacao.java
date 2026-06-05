@@ -1,6 +1,6 @@
-package transactions;
-
+package model;
 import java.time.LocalDateTime;
+import enums.TipoTransacao;
 
 public class Transacao {
 

@@ -5,13 +5,15 @@ public class Login {
 	private int id;
 	private String codigo;
 	private String senha;
-	private LoginStatus loginStatus;
+	private LoginStatus loginStatus;	
+	private Usuario usuario;
 	
 	public Login() {
 		this.id = -1;
 		this.codigo = null;
 		this.senha = null;
 		this.loginStatus = LoginStatus.NAO_VALIDADO;
+		this.usuario = null;
 	}
 
 	public int getId() {
@@ -44,6 +46,15 @@ public class Login {
 
 	public void setLoginStatus(LoginStatus loginStatus) {
 		this.loginStatus = loginStatus;
+	}
+	
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public LoginStatus validarLogin(String codigo, String senha) {

@@ -8,7 +8,6 @@ public abstract class Usuario {
 	private Endereco endereco;
 	
 	public Usuario(int id, String nome, LocalDate data, Endereco endereco) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.data = data;

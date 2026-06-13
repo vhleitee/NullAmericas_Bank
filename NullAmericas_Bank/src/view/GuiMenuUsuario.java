@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import main.Main;
+
 public class GuiMenuUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
@@ -14,6 +16,7 @@ public class GuiMenuUsuario extends JFrame {
     private JMenuItem miSair;
     private JMenuItem miPessoaFisica, miPessoaJuridica, miProduto, miCompra;
     private JMenuItem miSobre;
+    private JButton btnNewButton;
 
     public GuiMenuUsuario() {
         inicializarComponentes();
@@ -25,6 +28,14 @@ public class GuiMenuUsuario extends JFrame {
         setBounds(0, 0, 800, 600);
 
         contentPane = getContentPane();
+        
+        btnNewButton = new JButton("New button");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.out.println(Main.getUsuarioLogado().getNome());
+        	}
+        });
+        getContentPane().add(btnNewButton, BorderLayout.NORTH);
         mnBarra = new JMenuBar();
 
         mnArquivo = new JMenu("Arquivo");

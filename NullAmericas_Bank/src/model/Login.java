@@ -7,6 +7,7 @@ public class Login {
 	private String senha;
 	private LoginStatus loginStatus;	
 	private Usuario usuario;
+	private int idUsuario;
 	
 	public Login() {
 		this.id = -1;
@@ -64,5 +65,13 @@ public class Login {
 		else {
 			return LoginStatus.NAO_VALIDADO;
 		}
+	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 }

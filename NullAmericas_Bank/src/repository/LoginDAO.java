@@ -1,11 +1,13 @@
 package repository;
-import java.sql.*;
-
-import model.BD;
-import model.Login;
-import model.OperacaoBD;
 import enums.LoginStatus;
 import enums.TipoOperacaoBD;
+import java.sql.*;
+import model.BD;
+import model.ClientePessoaFisica;
+import model.Funcionario;
+import model.Login;
+import model.OperacaoBD;
+import model.Usuario;
 
 public class LoginDAO implements OperacaoBD{
 	private BD bd;
@@ -34,31 +36,58 @@ public class LoginDAO implements OperacaoBD{
 	}
 	
 	public boolean localizar() {
-        sql = "SELECT * FROM login where codigo = ?";
-        try {
-            statement = bd.connection.prepareStatement(sql);
-            statement.setString(1, login.getCodigo());
-
-            resultSet = statement.executeQuery();
-            resultSet.next();
-            
-            login.setId( resultSet.getInt(1) );
-            login.setCodigo( resultSet.getString(2) );
-            login.setSenha( resultSet.getString(3) );
-            
-            String statusString = resultSet.getString(4);
-            login.setLoginStatus(LoginStatus.valueOf(statusString));
-            //Pegar referencia ************************************************************************
-            
-            int idUsuario = resultSet.getInt("idUser");
-            
-            return true;
-        }
-        catch (SQLException erro) {
-            return false;
-        }
-    }
-
+	    sql = "SELECT * FROM login where codigo = ?";
+	    try {
+	        statement = bd.connection.prepareStatement(sql);
+	        statement.setString(1, login.getCodigo());
+	
+	        resultSet = statement.executeQuery();
+	        
+	        if (!resultSet.next()) {
+	            return false; 
+	        }
+	        
+	        login.setId(resultSet.getInt(1));
+	        login.setCodigo(resultSet.getString(2));
+	        login.setSenha(resultSet.getString(3));
+	        
+	        String statusString = resultSet.getString(4);
+	        login.setLoginStatus(LoginStatus.valueOf(statusString));
+	        
+	        int idUser = resultSet.getInt("idUser");
+	        login.setIdUsuario(idUser);
+	        
+	        // Carregar dados do usuário de acordo com seu tipo
+	        Usuario usuario = null;
+	        
+	        if (login.getLoginStatus() == LoginStatus.FUNCIONARIO) {
+	        	usuario = new Funcionario();
+	        } else if (login.getLoginStatus() == LoginStatus.USUARIO) {
+	            // Precisamos descobrir se é PF ou PJ, então verificamos o tipoDocumento
+	            // Por enquanto, vamos carregar como ClientePessoaFisica
+	            // Se tiver tipoDocumento = "02" será CNPJ (PJ), caso contrário CPF (PF)
+	            usuario = new ClientePessoaFisica();
+	        }
+	        
+	        if (usuario != null) {
+	            UsuarioDAO usuarioDAO = new UsuarioDAO();
+	            usuarioDAO.setBd(this.bd);
+	            usuario = usuarioDAO.localizarId(idUser, usuario);
+	            
+	            if (usuario != null) {
+	                login.setUsuario(usuario);
+	                return true;
+	            }
+	        }
+	        
+	        return false;
+	    }
+	    catch (SQLException erro) {
+	        erro.printStackTrace();
+	        return false;
+	    }
+	}
+	
     public String atualizar(TipoOperacaoBD operacao) {
         msg = "Operação realizada com sucesso!";
         try {

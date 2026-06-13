@@ -33,20 +33,61 @@ CREATE TABLE `login` (
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_user` (`idUser`),
-  -- CORREÇÃO AQUI: Mudado de `user` para `users`
   CONSTRAINT `fk_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ==========================================
--- 3. INSERÇÃO DOS DADOS
+-- 3. CRIAÇÃO DA TABELA CONTA
+-- ==========================================
+DROP TABLE IF EXISTS `conta`;
+CREATE TABLE `conta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) DEFAULT NULL,
+  `dataCadastro` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_idUser` (`idUser`),
+  CONSTRAINT `fk_conta_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ==========================================
+-- 4. CRIAÇÃO DA TABELA TRANSACAO
+-- ==========================================
+DROP TABLE IF EXISTS `transacao`;
+CREATE TABLE `transacao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idConta` int(11) DEFAULT NULL,
+  `idContaCorrespondente` int(11) DEFAULT NULL,
+  `dataTransacao` datetime DEFAULT current_timestamp(),
+  `valor` double DEFAULT NULL,
+  `tipoTransacao` varchar(22) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `indx_idConta` (`idConta`),
+  KEY `indx_idContaCorrespondente` (`idContaCorrespondente`),
+  CONSTRAINT `fk_idConta` FOREIGN KEY (`idConta`) REFERENCES `conta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_idContaCorrespondente` FOREIGN KEY (`idContaCorrespondente`) REFERENCES `conta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- ==========================================
+-- 5. INSERÇÃO DOS DADOS (FICTÍCIOS)
 -- ==========================================
 
--- Inserção dos dados tabela users
-INSERT INTO `users` (`idUser`, `nome`, `dataCadastro`, `pais`, `estado`, `cidade`, `rua`, `numero`, `complemento`, `cep`) VALUES 
-(1, 'Vitor', '2026-06-05 21:02:00', 'Brasil', 'SC', 'Ascurra', 'teste', 1234, '321', '89138-000'),
-(2, 'Franz', '2026-06-05 21:07:00', 'Brasil', 'SC', 'Ascurra', 'teste', 5489, '3453', '89138-000');
+-- Inserção na tabela users
+INSERT INTO `users` (`idUser`, `nome`, `pais`, `estado`, `cidade`, `rua`, `numero`, `complemento`, `cep`) VALUES 
+(1, 'Vitor', 'Brasil', 'SC', 'Ascurra', 'teste', 1234, '321', '89138-000'),
+(2, 'Franz', 'Brasil', 'SC', 'Ascurra', 'teste', 5489, '3453', '89138-000');
 
--- Inserção dos dados tabela login
+-- Inserção na tabela login
 INSERT INTO `login` (`codigo`, `senha`, `tipoUsuario`, `idUser`) VALUES 
 ('franz', '1234', 'FUNCIONARIO', 2),
 ('vitor', '1234', 'USUARIO', 1);
+
+-- Inserção na tabela conta
+INSERT INTO `conta` (`id`, `idUser`, `dataCadastro`) VALUES 
+(1, 1, '2026-06-05 21:05:00'),
+(2, 2, '2026-06-05 21:10:00');
+
+-- Inserção na tabela transacao
+INSERT INTO `transacao` (`idConta`, `idContaCorrespondente`, `valor`, `tipoTransacao`) VALUES 
+(1, 2, 150.00, 'DEPOSITO'),
+(2, 1, 50.50, 'SAQUE');

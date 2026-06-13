@@ -6,6 +6,10 @@ public class Funcionario extends Usuario {
 	private String funcao;
 	private String cpf;
 
+	public Funcionario() {
+		
+	}
+	
 	public Funcionario(int id, String nome, LocalDate data, Endereco endereco, String funcao, String cpf) {
 		super(id, nome, data, endereco);
 		this.funcao = funcao;

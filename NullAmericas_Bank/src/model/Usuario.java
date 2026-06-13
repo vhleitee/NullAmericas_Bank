@@ -7,6 +7,13 @@ public abstract class Usuario {
 	private LocalDate dataCadastro;
 	private Endereco endereco;
 	
+	public Usuario() {
+		this.id = -1;
+		this.nome = null;
+		this.dataCadastro = null;
+		this.endereco = null;
+	}
+	
 	public Usuario(int id, String nome, LocalDate data, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
@@ -25,10 +32,10 @@ public abstract class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public LocalDate getData() {
+	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
-	public void setData(LocalDate data) {
+	public void setDataCadastro(LocalDate data) {
 		this.dataCadastro = data;
 	}
 	public Endereco getEndereco() {

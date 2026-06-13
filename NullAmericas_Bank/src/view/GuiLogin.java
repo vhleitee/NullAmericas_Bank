@@ -2,6 +2,7 @@ package view;
 import java.awt.event.*;
 import javax.swing.*;
 import enums.LoginStatus;
+import main.Main;
 import model.BD;
 import model.Login;
 import repository.LoginDAO;
@@ -73,9 +74,13 @@ public class GuiLogin extends JFrame {
             		bd.close();
             		if( estado ) {
             			if (login.validarLogin(codigo,senha) == LoginStatus.FUNCIONARIO) {
+            				// Salvar usuário logado na Main
+            				Main.setUsuarioLogado(login.getUsuario());
                 			GuiMenuFuncionario.abrir();
                 			closeFrame();
                 		}else if(login.validarLogin(codigo,senha) == LoginStatus.USUARIO){
+            				// Salvar usuário logado na Main
+            				Main.setUsuarioLogado(login.getUsuario());
                 			GuiMenuUsuario.abrir();
                 			closeFrame();
                 		}

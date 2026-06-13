@@ -1,9 +1,9 @@
 package model;
 
-public class ClientePj extends Cliente {
+public class ClientePessoaJuridica extends Cliente {
 	private String cnpj;
 	
-	public ClientePj(String cnpj){
+	public ClientePessoaJuridica(String cnpj){
 		super();
 		this.cnpj = cnpj;
 	}

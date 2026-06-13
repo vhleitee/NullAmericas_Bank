@@ -10,6 +10,13 @@ public  class Conta {
 	private Cliente cliente;
 	private LocalDate dataCadastro;
 
+	public Conta(){
+		this.id = -1;
+		this.saldo = 0;
+		this.cliente = null;
+		this.dataCadastro = null;
+		
+	}
 	public Conta(int id, double saldo, Cliente cliente) {
 		this.id = id;
 		this.saldo = saldo;

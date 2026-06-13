@@ -1,11 +1,14 @@
 package model;
 import enums.TipoTransacao;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public  class Conta {
 	private int id;
 	private double saldo;
 	private Cliente cliente;
+	private LocalDate dataCadastro;
 
 	public Conta(int id, double saldo, Cliente cliente) {
 		this.id = id;
@@ -56,5 +59,15 @@ public  class Conta {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	
+	
 
 }

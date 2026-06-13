@@ -5,35 +5,35 @@ import enums.TipoTransacao;
 public class Transacao {
 
 	private int id;
-	private int idContaOrigem;
-	private int idContaDestino;
-	private LocalDateTime data;
+	private int idConta;
+	private int idContaCorrespondente;
+	private LocalDateTime dataTransacao;
 	private double valor;
 	private TipoTransacao tipoTransacao;
 	
 	public Transacao() {
 		this.id = -1;
-		this.idContaOrigem = -1;
-		this.idContaDestino = -1;
-		this.data = null;
+		this.idConta = -1;
+		this.idContaCorrespondente = -1;
+		this.dataTransacao = null;
 		this.valor = 0;
 		this.tipoTransacao = null;
 	}
 	
 	public Transacao(int idContaOrigem, int idContaDestino, LocalDateTime data, double valor, TipoTransacao tipoTransacao) {
 		this.id = -1;
-		this.idContaOrigem = idContaOrigem;
-		this.idContaDestino = idContaDestino;
-		this.data = data;
+		this.idConta = idContaOrigem;
+		this.idContaCorrespondente = idContaDestino;
+		this.dataTransacao = data;
 		this.valor = valor;
 		this.tipoTransacao = tipoTransacao;
 	}
 	
 	public Transacao(int id, int idContaOrigem, int idContaDestino, LocalDateTime data, double valor, TipoTransacao tipoTransacao) {
 		this.id = id;
-		this.idContaOrigem = idContaOrigem;
-		this.idContaDestino = idContaDestino;
-		this.data = data;
+		this.idConta = idContaOrigem;
+		this.idContaCorrespondente = idContaDestino;
+		this.dataTransacao = data;
 		this.valor = valor;
 		this.tipoTransacao = tipoTransacao;
 	}
@@ -54,27 +54,27 @@ public class Transacao {
 	}
 
 	public int getIdContaOrigem() {
-		return idContaOrigem;
+		return idConta;
 	}
 
 	public void setIdContaOrigem(int idContaOrigem) {
-		this.idContaOrigem = idContaOrigem;
+		this.idConta = idContaOrigem;
 	}
 
 	public int getIdContaDestino() {
-		return idContaDestino;
+		return idContaCorrespondente;
 	}
 
 	public void setIdContaDestino(int idContaDestino) {
-		this.idContaDestino = idContaDestino;
+		this.idContaCorrespondente = idContaDestino;
 	}
 
 	public LocalDateTime getData() {
-		return data;
+		return dataTransacao;
 	}
 
 	public void setData(LocalDateTime data) {
-		this.data = data;
+		this.dataTransacao = data;
 	}
 
 	public double getValor() {

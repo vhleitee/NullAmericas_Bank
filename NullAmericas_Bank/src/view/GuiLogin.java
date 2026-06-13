@@ -8,7 +8,6 @@ import model.Conta;
 import model.Login;
 import repository.ContaDAO;
 import repository.LoginDAO;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GuiLogin extends JFrame {
@@ -84,14 +83,8 @@ public class GuiLogin extends JFrame {
                 		}else if(login.validarLogin(codigo,senha) == LoginStatus.USUARIO){
             				// Salvar usuário logado na Main
             				Main.setUsuarioLogado(login.getUsuario());
-            				
-                            ContaDAO contaDAO = new ContaDAO();
-                            contaDAO.setBd(bd);
-                            List<Conta> listaContas = contaDAO.localizarContas(login.getUsuario());
+            				Main.carregarContasDoUsuario();
                             
-                            if (listaContas != null) {
-                                Main.setContasCarregadas(listaContas);
-                            }
             			
                 			GuiMenuUsuario.abrir();
                 			closeFrame();

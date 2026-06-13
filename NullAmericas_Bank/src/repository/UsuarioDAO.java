@@ -1,10 +1,8 @@
 package repository;
 
 import enums.TipoOperacaoBD;
-import main.Main;
 
 import java.sql.*;
-import java.util.List;
 
 import model.BD;
 import model.Endereco;
@@ -12,7 +10,6 @@ import model.Funcionario;
 import model.OperacaoBD;
 import model.Usuario;
 import model.Cliente;
-import model.Conta;
 
 public class UsuarioDAO implements OperacaoBD {
     private BD bd;

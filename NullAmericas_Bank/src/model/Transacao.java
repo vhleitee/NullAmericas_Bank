@@ -53,20 +53,20 @@ public class Transacao {
 		this.id = id;
 	}
 
-	public int getIdContaOrigem() {
+	public int getIdConta() {
 		return idConta;
 	}
 
-	public void setIdContaOrigem(int idContaOrigem) {
-		this.idConta = idContaOrigem;
+	public void setIdConta(int idConta) {
+		this.idConta = idConta;
 	}
 
-	public int getIdContaDestino() {
+	public int getIdContaCorrespondente() {
 		return idContaCorrespondente;
 	}
 
-	public void setIdContaDestino(int idContaDestino) {
-		this.idContaCorrespondente = idContaDestino;
+	public void setIdContaCorrespondente(int idContaCorrespondente) {
+		this.idContaCorrespondente = idContaCorrespondente;
 	}
 
 	public LocalDateTime getData() {
@@ -91,5 +91,9 @@ public class Transacao {
 
 	public void setTipoTransacao(TipoTransacao tipoTransacao) {
 		this.tipoTransacao = tipoTransacao;
+	}
+	
+	public String toString() {
+		return this.getData() + " - " + this.getIdContaCorrespondente() + " - " + this.getValor() + " - " + this.getTipoTransacao();
 	}
 }

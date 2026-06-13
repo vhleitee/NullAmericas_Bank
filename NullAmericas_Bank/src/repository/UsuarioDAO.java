@@ -1,13 +1,18 @@
 package repository;
 
 import enums.TipoOperacaoBD;
+import main.Main;
+
 import java.sql.*;
+import java.util.List;
+
 import model.BD;
 import model.Endereco;
 import model.Funcionario;
 import model.OperacaoBD;
 import model.Usuario;
 import model.Cliente;
+import model.Conta;
 
 public class UsuarioDAO implements OperacaoBD {
     private BD bd;
@@ -88,13 +93,6 @@ public class UsuarioDAO implements OperacaoBD {
         } catch (SQLException erro) {
             erro.printStackTrace(); 
             return null;
-        } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
     

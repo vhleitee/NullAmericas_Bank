@@ -1,6 +1,8 @@
 package main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import view.GuiLogin;
@@ -10,6 +12,7 @@ public class Main {
     private static GuiLogin frame;
     
     private static Usuario usuarioLogado; 
+    private static List<Conta> contasCarregadas;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -36,4 +39,12 @@ public class Main {
     public static Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
+
+	public static List<Conta> getContasCarregadas() {
+		return contasCarregadas;
+	}
+
+	public static void setContasCarregadas(List<Conta> contasCarregadas) {
+		Main.contasCarregadas = contasCarregadas;
+	}
 }

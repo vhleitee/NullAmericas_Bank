@@ -23,6 +23,10 @@ public  class Conta {
 		this.cliente = cliente;
 	}
 	
+	public String toString() {
+		return this.getId() + " - " + this.getSaldo() +  " - " + this.getDataCadastro();
+	}
+	
 	public boolean sacar(double valor) {
 		return false;
 	}

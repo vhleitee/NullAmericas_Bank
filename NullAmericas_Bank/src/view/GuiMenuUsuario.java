@@ -33,6 +33,10 @@ public class GuiMenuUsuario extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		System.out.println(Main.getUsuarioLogado().toString());
+        		
+        		for (int i = 0; i < Main.getContasCarregadas().size(); i++) {
+        			System.out.println(Main.getContasCarregadas().get(i).toString());
+        		}
         	}
         });
         getContentPane().add(btnNewButton, BorderLayout.NORTH);

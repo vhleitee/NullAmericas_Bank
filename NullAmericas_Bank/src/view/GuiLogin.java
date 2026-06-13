@@ -4,8 +4,12 @@ import javax.swing.*;
 import enums.LoginStatus;
 import main.Main;
 import model.BD;
+import model.Conta;
 import model.Login;
+import repository.ContaDAO;
 import repository.LoginDAO;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -71,7 +75,6 @@ public class GuiLogin extends JFrame {
             		loginDao.setBd(bd);
             		loginDao.setLogin(login);
             		boolean estado = loginDao.localizar();
-            		bd.close();
             		if( estado ) {
             			if (login.validarLogin(codigo,senha) == LoginStatus.FUNCIONARIO) {
             				// Salvar usuário logado na Main
@@ -81,6 +84,15 @@ public class GuiLogin extends JFrame {
                 		}else if(login.validarLogin(codigo,senha) == LoginStatus.USUARIO){
             				// Salvar usuário logado na Main
             				Main.setUsuarioLogado(login.getUsuario());
+            				
+                            ContaDAO contaDAO = new ContaDAO();
+                            contaDAO.setBd(bd);
+                            List<Conta> listaContas = contaDAO.localizarContas(login.getUsuario());
+                            
+                            if (listaContas != null) {
+                                Main.setContasCarregadas(listaContas);
+                            }
+            			
                 			GuiMenuUsuario.abrir();
                 			closeFrame();
                 		}
@@ -88,6 +100,7 @@ public class GuiLogin extends JFrame {
             		else {
             			JOptionPane.showMessageDialog( null, "Login ou Senha incorretas!", "Informação", JOptionPane.ERROR_MESSAGE );
             		}
+            		bd.close();
             	}
             }
         });

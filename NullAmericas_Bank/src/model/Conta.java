@@ -13,19 +13,19 @@ public  class Conta {
 		this.cliente = cliente;
 	}
 	
-	public  boolean sacar(double valor) {
+	public boolean sacar(double valor) {
 		return false;
 	}
 	
-	public  boolean transferir(int contaID, double valor) {
+	public boolean transferir(int contaID, double valor) {
 		return false;
 	}
 	
-	public  List<Transacao> extrato() {
+	public List<Transacao> extrato() {
 		return null;
 	}
 	
-	public  List<Transacao> extrato(TipoTransacao tipoTrasacao) {
+	public List<Transacao> extrato(TipoTransacao tipoTrasacao) {
 		return null;
 	}
 	

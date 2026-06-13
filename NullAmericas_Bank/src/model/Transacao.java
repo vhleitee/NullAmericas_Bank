@@ -38,6 +38,13 @@ public class Transacao {
 		this.tipoTransacao = tipoTransacao;
 	}
 	
+	public boolean salvarTransacao() {
+		
+		//Implementar o salvamento usando o TransacaoDAO
+		
+		return true;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -85,12 +92,4 @@ public class Transacao {
 	public void setTipoTransacao(TipoTransacao tipoTransacao) {
 		this.tipoTransacao = tipoTransacao;
 	}
-	
-	public boolean salvarTransacao() {
-		
-		//Implementar o salvamento usando o TransacaoDAO
-		
-		return true;
-	}
-		
 }

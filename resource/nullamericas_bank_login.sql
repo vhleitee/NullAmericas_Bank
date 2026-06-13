@@ -8,9 +8,9 @@ USE `nullamericas_bank`;
 -- ==========================================
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `idUser` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) DEFAULT NULL,
-  `dataCadastro` datetime DEFAULT NULL,
+  `dataCadastro` datetime DEFAULT current_timestamp(),
   `pais` varchar(255) DEFAULT NULL,
   `estado` varchar(255) DEFAULT NULL,
   `cidade` varchar(255) DEFAULT NULL,
@@ -18,7 +18,9 @@ CREATE TABLE `users` (
   `numero` int(11) DEFAULT NULL,
   `complemento` varchar(255) DEFAULT NULL,
   `cep` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idUser`)
+  `documento` varchar(14) DEFAULT NULL,
+  `tipoDocumento` varchar(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ==========================================
@@ -33,7 +35,7 @@ CREATE TABLE `login` (
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_user` (`idUser`),
-  CONSTRAINT `fk_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ==========================================
@@ -46,7 +48,7 @@ CREATE TABLE `conta` (
   `dataCadastro` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `idx_idUser` (`idUser`),
-  CONSTRAINT `fk_conta_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_conta_user` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ==========================================
@@ -73,9 +75,9 @@ CREATE TABLE `transacao` (
 -- ==========================================
 
 -- Inserção na tabela users
-INSERT INTO `users` (`idUser`, `nome`, `pais`, `estado`, `cidade`, `rua`, `numero`, `complemento`, `cep`) VALUES 
-(1, 'Vitor', 'Brasil', 'SC', 'Ascurra', 'teste', 1234, '321', '89138-000'),
-(2, 'Franz', 'Brasil', 'SC', 'Ascurra', 'teste', 5489, '3453', '89138-000');
+INSERT INTO `users` (`id`, `nome`, `pais`, `estado`, `cidade`, `rua`, `numero`, `complemento`, `cep`, `documento`, `tipoDocumento`) VALUES 
+(1, 'Vitor', 'Brasil', 'SC', 'Ascurra', 'teste', 1234, '321', '89138-000', '63447156007', 'CPF'),
+(2, 'Franz', 'Brasil', 'SC', 'Ascurra', 'teste', 5489, '3453', '89138-000', '23914430000114', 'CNPJ');
 
 -- Inserção na tabela login
 INSERT INTO `login` (`codigo`, `senha`, `tipoUsuario`, `idUser`) VALUES 

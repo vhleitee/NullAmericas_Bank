@@ -3,7 +3,7 @@ import enums.LoginStatus;
 import enums.TipoOperacaoBD;
 import java.sql.*;
 import model.BD;
-import model.ClientePessoaFisica;
+import model.Cliente;
 import model.Funcionario;
 import model.Login;
 import model.OperacaoBD;
@@ -57,16 +57,12 @@ public class LoginDAO implements OperacaoBD{
 	        int idUser = resultSet.getInt("idUser");
 	        login.setIdUsuario(idUser);
 	        
-	        // Carregar dados do usuário de acordo com seu tipo
 	        Usuario usuario = null;
 	        
 	        if (login.getLoginStatus() == LoginStatus.FUNCIONARIO) {
 	        	usuario = new Funcionario();
 	        } else if (login.getLoginStatus() == LoginStatus.USUARIO) {
-	            // Precisamos descobrir se é PF ou PJ, então verificamos o tipoDocumento
-	            // Por enquanto, vamos carregar como ClientePessoaFisica
-	            // Se tiver tipoDocumento = "02" será CNPJ (PJ), caso contrário CPF (PF)
-	            usuario = new ClientePessoaFisica();
+	            usuario = new Cliente();
 	        }
 	        
 	        if (usuario != null) {

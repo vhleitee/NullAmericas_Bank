@@ -32,7 +32,7 @@ public class GuiMenuUsuario extends JFrame {
         btnNewButton = new JButton("New button");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		System.out.println(Main.getUsuarioLogado().getNome());
+        		System.out.println(Main.getUsuarioLogado().toString());
         	}
         });
         getContentPane().add(btnNewButton, BorderLayout.NORTH);

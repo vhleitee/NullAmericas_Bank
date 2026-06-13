@@ -2,8 +2,8 @@ package model;
 
 import java.time.LocalDate;
 
-public abstract class Cliente extends Usuario {
-
+public class Cliente extends Usuario {
+	
 	public Cliente() {
 		super();
 	}

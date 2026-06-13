@@ -6,6 +6,8 @@ public abstract class Usuario {
 	private String nome;
 	private LocalDate dataCadastro;
 	private Endereco endereco;
+	private String documento;
+	private String tipoDocumento;
 	
 	public Usuario() {
 		this.id = -1;
@@ -20,6 +22,13 @@ public abstract class Usuario {
 		this.dataCadastro = data;
 		this.endereco = endereco;
 	}
+	
+	public String toString() {
+		String texto = this.getId() + " - " + this.getNome() + " - " + this.getDataCadastro() +
+					   " - " + this.getDocumento() + " - " + this.getTipoDocumento();
+		return texto;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -43,5 +52,21 @@ public abstract class Usuario {
 	}
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}	
 }

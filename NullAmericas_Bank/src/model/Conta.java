@@ -2,7 +2,7 @@ package model;
 import enums.TipoTransacao;
 import java.util.List;
 
-public abstract class Conta {
+public  class Conta {
 	private int id;
 	private double saldo;
 	private Cliente cliente;
@@ -13,14 +13,25 @@ public abstract class Conta {
 		this.cliente = cliente;
 	}
 	
-	public abstract boolean sacar(double valor);
+	public  boolean sacar(double valor) {
+		return false;
+	}
 	
-	public abstract boolean transferir(int contaID, double valor);
+	public  boolean transferir(int contaID, double valor) {
+		return false;
+	}
 	
-	public abstract List<Transacao> extrato();
+	public  List<Transacao> extrato() {
+		return null;
+	}
 	
-	public abstract List<Transacao> extrato(TipoTransacao tipoTrasacao);
+	public  List<Transacao> extrato(TipoTransacao tipoTrasacao) {
+		return null;
+	}
 	
+	public boolean depositar(double valor) {
+		return false;
+	}
 	
 	public int getId() {
 		return id;

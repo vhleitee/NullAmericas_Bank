@@ -1,9 +1,9 @@
 package model;
 
-public class ClientePf extends Cliente{
+public class ClientePessoaFisica extends Cliente{
 	private String cpf;
 	
-	public ClientePf(String cpf) {
+	public ClientePessoaFisica(String cpf) {
 		super();
 		this.cpf = cpf;
 	}

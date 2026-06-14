@@ -1,5 +1,7 @@
 package model;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import enums.TipoTransacao;
 
 public class Transacao {
@@ -11,6 +13,8 @@ public class Transacao {
 	private double valor;
 	private TipoTransacao tipoTransacao;
 	
+	private static final DateTimeFormatter FORMATTER_BR = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+	
 	public Transacao() {
 		this.id = -1;
 		this.idConta = -1;
@@ -18,31 +22,6 @@ public class Transacao {
 		this.dataTransacao = null;
 		this.valor = 0;
 		this.tipoTransacao = null;
-	}
-	
-	public Transacao(int idContaOrigem, int idContaDestino, LocalDateTime data, double valor, TipoTransacao tipoTransacao) {
-		this.id = -1;
-		this.idConta = idContaOrigem;
-		this.idContaCorrespondente = idContaDestino;
-		this.dataTransacao = data;
-		this.valor = valor;
-		this.tipoTransacao = tipoTransacao;
-	}
-	
-	public Transacao(int id, int idContaOrigem, int idContaDestino, LocalDateTime data, double valor, TipoTransacao tipoTransacao) {
-		this.id = id;
-		this.idConta = idContaOrigem;
-		this.idContaCorrespondente = idContaDestino;
-		this.dataTransacao = data;
-		this.valor = valor;
-		this.tipoTransacao = tipoTransacao;
-	}
-	
-	public boolean salvarTransacao() {
-		
-		//Implementar o salvamento usando o TransacaoDAO
-		
-		return true;
 	}
 	
 	public int getId() {
@@ -73,6 +52,13 @@ public class Transacao {
 		return dataTransacao;
 	}
 
+	public String getDataFormatadaBR() {
+		if (this.dataTransacao == null) {
+			return "Data não informada";
+		}
+		return this.dataTransacao.format(FORMATTER_BR);
+	}
+
 	public void setData(LocalDateTime data) {
 		this.dataTransacao = data;
 	}
@@ -93,7 +79,14 @@ public class Transacao {
 		this.tipoTransacao = tipoTransacao;
 	}
 	
+	@Override
 	public String toString() {
-		return this.getData() + " - " + this.getIdContaCorrespondente() + " - " + this.getValor() + " - " + this.getTipoTransacao();
+	    return String.format(
+	        "Código: %d | %s R$ %.2f às %s",
+	        this.getId(),
+	        this.getTipoTransacao().getDescricao(),
+	        this.getValor(),
+	        this.getDataFormatadaBR()
+	    );
 	}
 }

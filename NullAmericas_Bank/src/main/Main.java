@@ -17,22 +17,17 @@ public class Main {
 	private static List<Conta> contasCarregadas;
 
 	public static void main(String[] args) {
-		// Inicializa a interface gráfica na thread correta do Swing
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				frame = new GuiLogin();
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();
-
-				// Centraliza a janela na tela
 				frame.setLocation((tela.width - frame.getSize().width) / 2, (tela.height - frame.getSize().height) / 2);
-
 				frame.setVisible(true);
 			}
 		});
 	}
 
-	// Método auxiliar para carregar as contas após o login ser efetuado com sucesso
 	public static void carregarContasDoUsuario() {
 		if (usuarioLogado == null) {
 			System.out.println("Nenhum usuário logado para carregar contas.");
@@ -44,29 +39,38 @@ public class Main {
 			ContaDAO contaDAO = new ContaDAO();
 			contaDAO.setBd(bd);
 
-			// Correção: Chamando o método estático da própria classe sem o 'this'
 			List<Conta> listaContas = contaDAO.localizarContas(getUsuarioLogado());
 
 			if (listaContas != null) {
 				Main.setContasCarregadas(listaContas);
 			}
-			// Idealmente aqui você fecharia a conexão: bd.disconnect(); (se existir no seu
-			// projeto)
 		}
 	}
 
-	public static void carregarTransacoes() {
+	// MODIFICADO: Agora aceita uma conta específica por parâmetro para carregar as transações dela
+	public static void carregarTransacoes(Conta contaSelecionada) {
+		if (contaSelecionada == null) {
+			System.out.println("Nenhuma conta selecionada para carregar transações.");
+			return;
+		}
+
 		BD bd = new BD();
 		if (bd.connect()) {
-			TransacaoDAO transacoes = new TransacaoDAO();
-			transacoes.setBd(bd);
-			List<Conta> contas = Main.getContasCarregadas();			
-			transacoes.setConta(contas.getFirst());
-			List<Transacao> transacao = transacoes.localizarTransacoes();
+			TransacaoDAO transacoesDAO = new TransacaoDAO();
+			transacoesDAO.setBd(bd);
 			
-			for (int i = 0; i < transacao.size(); i++) {
-				System.out.println(transacao.get(i).toString());
+			// Associa a conta escolhida ao DAO
+			transacoesDAO.setConta(contaSelecionada);
+			
+			// Executa a busca (que internamente preenche a lista dentro de contaSelecionada)
+			transacoesDAO.localizarTransacoes();
+			
+			// Exibe o extrato tirado de dentro da própria conta selecionada
+			System.out.println("Extrato da Conta ID: " + contaSelecionada.getId());
+			for (Transacao t : contaSelecionada.extrato()) {
+				System.out.println(t.toString());
 			}
+			System.out.println("---------------------------");
 		}
 	}
 

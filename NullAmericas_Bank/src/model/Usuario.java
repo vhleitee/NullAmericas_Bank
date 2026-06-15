@@ -32,24 +32,31 @@ public abstract class Usuario {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
+	
 	public void setDataCadastro(LocalDate data) {
 		this.dataCadastro = data;
 	}
+	
 	public Endereco getEndereco() {
 		return endereco;
 	}
+	
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}

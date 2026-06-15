@@ -1,7 +1,5 @@
 package model;
 
-import enums.TipoTransacao;
-
 import java.time.LocalDate;
 import java.util.ArrayList; // Adicionado
 import java.util.List;
@@ -40,30 +38,10 @@ public class Conta {
         
     }
 
-    public boolean sacar(double valor) {
-        return false;
-    }
-
-    public boolean transferir(int contaID, double valor) {
-        return false;
-    }
-
-    // Retorna a lista de transações que pertence a ESTA conta
     public List<Transacao> extrato() {
         return this.transacoes;
     }
 
-    public List<Transacao> extrato(TipoTransacao tipoTransacao) {
-        if (this.transacoes == null) return null;
-        // Filtra a lista pelo tipo se necessário no futuro
-        return this.transacoes.stream()
-                .filter(t -> t.getTipoTransacao() == tipoTransacao)
-                .toList();
-    }
-
-    public boolean depositar(double valor) {
-        return false;
-    }
 
     public int getId() {
         return id;
@@ -107,7 +85,6 @@ public class Conta {
         this.dataCadastro = dataCadastro;
     }
 
-    // Métodos Getter e Setter para a lista de transações
     public List<Transacao> getTransacoes() {
         return transacoes;
     }

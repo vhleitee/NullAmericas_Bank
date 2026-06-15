@@ -19,17 +19,6 @@ public class Endereco {
 		this.cep = null;
 	}
 
-	public Endereco(String pais, String estado, String cidade, String rua, int numero, String complemento, String cep) {
-		super();
-		this.pais = pais;
-		this.estado = estado;
-		this.cidade = cidade;
-		this.rua = rua;
-		this.numero = numero;
-		this.complemento = complemento;
-		this.cep = cep;
-	}
-
 	public String getPais() {
 		return pais;
 	}

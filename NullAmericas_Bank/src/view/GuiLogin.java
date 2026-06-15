@@ -25,7 +25,7 @@ public class GuiLogin extends JFrame {
     }
 
     private void inicializarComponentes() {
-        setTitle("Login no Sistema");
+        setTitle("Login");
         setBounds(0, 0, 250, 200);
         setLayout(null);
 
@@ -76,16 +76,13 @@ public class GuiLogin extends JFrame {
             		boolean estado = loginDao.localizar();
             		if( estado ) {
             			if (login.validarLogin(codigo,senha) == LoginStatus.FUNCIONARIO) {
-            				// Salvar usuário logado na Main
             				Main.setUsuarioLogado(login.getUsuario());
                 			GuiMenuFuncionario.abrir();
                 			closeFrame();
                 		}else if(login.validarLogin(codigo,senha) == LoginStatus.USUARIO){
-            				// Salvar usuário logado na Main
             				Main.setUsuarioLogado(login.getUsuario());
             				Main.carregarContasDoUsuario();
-                            
-            			
+
                 			GuiMenuUsuario.abrir();
                 			closeFrame();
                 		}

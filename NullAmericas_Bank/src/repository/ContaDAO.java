@@ -1,7 +1,5 @@
 package repository;
 
-import enums.TipoOperacaoBD;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,11 +11,13 @@ import model.Cliente;
 import model.Conta;
 import model.Usuario;
 
-public class ContaDAO implements model.OperacaoBD {
+public class ContaDAO {
 
     private BD bd;
     private Conta conta;
     private Usuario usuario;
+    
+    private String sql, msg;
 
     private PreparedStatement statement;
     private ResultSet resultSet;
@@ -41,7 +41,7 @@ public class ContaDAO implements model.OperacaoBD {
 
     public List<Conta> localizarContas(Usuario usuarioInstanciado) {
 
-        String sql = """
+        sql = """
             SELECT
                 c.*,
                 COALESCE(SUM(t.valor), 0) AS saldo
@@ -91,13 +91,60 @@ public class ContaDAO implements model.OperacaoBD {
         }
     }
 
-    @Override
-    public boolean localizar() {
-        return false;
+    public List<Conta> localizarContaPorDocumento(String documento) {
+    	
+    	sql = """
+				SELECT 
+					c.id AS conta_id,
+					c.dataCadastro AS conta_data,
+					u.id AS user_id,
+					u.nome,
+					u.documento,
+					u.cidade,
+					u.estado,
+					u.tipoDocumento,
+					l.tipoUsuario              
+				FROM nullamericas_bank.conta c
+				LEFT JOIN nullamericas_bank.users u ON c.idUser = u.id
+				LEFT JOIN nullamericas_bank.login l ON u.id = l.idUser 
+				WHERE u.documento LIKE ? and l.tipoUsuario = "USUARIO";
+    		""";
+    	
+    	List<Conta> listaContas = new ArrayList<>();
+    	
+		try {
+			statement = bd.connection.prepareStatement(sql);
+			statement.setString(1, "%" + documento + "%");
+
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+	            
+				Cliente usuarioAtual = new Cliente();
+	            usuarioAtual.setId(resultSet.getInt("user_id"));
+	            usuarioAtual.setNome(resultSet.getString("nome"));
+	            usuarioAtual.setDocumento(resultSet.getString("documento"));
+	            usuarioAtual.setTipoDocumento(resultSet.getString("tipoDocumento"));
+
+	            Conta contaAtual = new Conta();
+	            contaAtual.setCliente(usuarioAtual);
+	            contaAtual.setId(resultSet.getInt("conta_id"));
+	            
+	            listaContas.add(contaAtual);
+	            
+	        }
+			
+			if (listaContas.isEmpty()) {
+	            return null; 
+	        }
+
+			return listaContas;
+
+		} catch (SQLException erro) {
+			erro.printStackTrace();
+			return null;
+		}
+    	
     }
 
-    @Override
-    public String atualizar(TipoOperacaoBD operacao) {
-        return "teste";
-    }
 }

@@ -76,13 +76,12 @@ public class GuiLogin extends JFrame {
             		boolean estado = loginDao.localizar();
             		if( estado ) {
             			if (login.validarLogin(codigo,senha) == LoginStatus.FUNCIONARIO) {
-            				Main.setUsuarioLogado(login.getUsuario());
+            				Main.setLogin(login);
                 			GuiMenuFuncionario.abrir();
                 			closeFrame();
                 		}else if(login.validarLogin(codigo,senha) == LoginStatus.USUARIO){
-            				Main.setUsuarioLogado(login.getUsuario());
+                			Main.setLogin(login);
             				Main.carregarContasDoUsuario();
-
                 			GuiMenuUsuario.abrir();
                 			closeFrame();
                 		}

@@ -11,7 +11,7 @@ import model.OperacaoBD;
 import model.Usuario;
 import model.Cliente;
 
-public class UsuarioDAO implements OperacaoBD {
+public class UsuarioDAO {
     private BD bd;
     private Usuario usuario;
 
@@ -36,13 +36,9 @@ public class UsuarioDAO implements OperacaoBD {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    public boolean localizar() {
-        return false;
-    }
     
     public Usuario localizarId(int id, Usuario usuarioInstanciado) {
-        String sql = "SELECT * FROM users WHERE id = ?";
+        sql = "SELECT * FROM users WHERE id = ?";
         
         this.usuario = usuarioInstanciado;
         
@@ -94,6 +90,36 @@ public class UsuarioDAO implements OperacaoBD {
     }
     
     public String atualizar(TipoOperacaoBD operacao) {
-        return "teste";
+    	msg = "Operação realizada com sucesso!";
+    	
+    	try {
+	    	if (operacao == TipoOperacaoBD.INCLUSAO) {
+	    		
+	            sql = "INSERT INTO `nullamericas_bank`.`users`"
+	            + " (`nome`, `pais`, `estado`, `cidade`, `rua`, `numero`, `complemento`, `cep`, `documento`, `tipoDocumento`) VALUES ("
+	            + " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	              
+	            statement = bd.connection.prepareStatement(sql);
+	            statement.setString(1, usuario.getNome());
+	            statement.setString(2, usuario.getEndereco().getPais());
+	            statement.setString(3, usuario.getEndereco().getEstado());
+	            statement.setString(4, usuario.getEndereco().getCidade());
+	            statement.setString(5, usuario.getEndereco().getRua());
+	            statement.setInt(6, usuario.getEndereco().getNumero());
+	            statement.setString(7, usuario.getEndereco().getComplemento());
+	            statement.setString(8, usuario.getEndereco().getCep());
+	            statement.setString(9, usuario.getDocumento());
+	            statement.setString(10, usuario.getTipoDocumento());
+	            
+	    	} else if (operacao == TipoOperacaoBD.EXCLUSAO) {
+	    		
+	    	} else if (operacao == TipoOperacaoBD.ALTERACAO) {
+	    	
+	    	}
+    	}catch (SQLException erro) {
+            msg = "Falha na operação - " + erro.toString();
+        }
+
+        return msg;
     }
 }

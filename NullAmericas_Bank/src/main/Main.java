@@ -9,7 +9,8 @@ import javax.swing.SwingUtilities;
 
 import model.BD;
 import model.Conta;
-import model.Usuario;
+import model.Login;
+//import model.Usuario;
 import repository.ContaDAO;
 import view.GuiLogin;
 
@@ -17,7 +18,7 @@ public class Main {
 
 	private static GuiLogin frame;
 
-	private static Usuario usuarioLogado;
+	private static Login login;
 	private static List<Conta> contasCarregadas;
 
 	public static void main(String[] args) {
@@ -39,7 +40,7 @@ public class Main {
 
 	public static void carregarContasDoUsuario() {
 
-		if (usuarioLogado == null) {
+		if (getLogin().getUsuario() == null) {
 			System.out.println("Nenhum usuário logado para carregar contas.");
 			return;
 		}
@@ -52,7 +53,7 @@ public class Main {
 			contaDAO.setBd(bd);
 
 			List<Conta> listaContas =
-					contaDAO.localizarContas(getUsuarioLogado());
+					contaDAO.localizarContas(getLogin().getUsuario());
 
 			if (listaContas != null) {
 				Main.setContasCarregadas(listaContas);
@@ -62,19 +63,19 @@ public class Main {
 		}
 	}
 
-	public static void setUsuarioLogado(Usuario usuario) {
-		usuarioLogado = usuario;
-	}
-
-	public static Usuario getUsuarioLogado() {
-		return usuarioLogado;
-	}
-
 	public static List<Conta> getContasCarregadas() {
 		return contasCarregadas;
 	}
 
 	public static void setContasCarregadas(List<Conta> contasCarregadas) {
 		Main.contasCarregadas = contasCarregadas;
+	}
+
+	public static Login getLogin() {
+		return login;
+	}
+
+	public static void setLogin(Login login) {
+		Main.login = login;
 	}
 }

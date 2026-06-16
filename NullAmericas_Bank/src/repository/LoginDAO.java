@@ -87,13 +87,18 @@ public class LoginDAO implements OperacaoBD{
     public String atualizar(TipoOperacaoBD operacao) {
         msg = "Operação realizada com sucesso!";
         try {
-            if (operacao == TipoOperacaoBD.INCLUSAO) {
-                sql = "INSERT into login(codigo,senha) values (?,?)";
-                statement = bd.connection.prepareStatement(sql);
+        	if (operacao == TipoOperacaoBD.INCLUSAO) {
+        	    if (login == null || login.getUsuario() == null) {
+        	        throw new IllegalArgumentException("Não é possível incluir o login: O usuário associado não pode ser nulo.");
+        	    }
+        	    sql = "INSERT into login(codigo,senha,tipoUsuario, idUser) values (?,?,?,?)";
+        	    statement = bd.connection.prepareStatement(sql);
 
-                statement.setString(1, login.getCodigo());
-                statement.setString(2, login.getSenha());
-            }
+        	    statement.setString(1, login.getCodigo());
+        	    statement.setString(2, login.getSenha());
+        	    statement.setString(3, login.getLoginStatus().name());
+        	    statement.setInt(4, login.getUsuario().getId());
+        	}
             else if (operacao == TipoOperacaoBD.ALTERACAO) {
             	sql = "UPDATE login SET senha = ? WHERE codigo = ?";
                 statement = bd.connection.prepareStatement(sql);

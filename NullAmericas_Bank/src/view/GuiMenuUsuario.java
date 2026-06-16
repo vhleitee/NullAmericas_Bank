@@ -317,8 +317,8 @@ public class GuiMenuUsuario extends JFrame {
 	}
 
 	private void carregarDados() {
-		if (Main.getUsuarioLogado() != null) {
-			lblOlaUser.setText("Olá, " + Main.getUsuarioLogado().getNome());
+		if (Main.getLogin().getUsuario() != null) {
+			lblOlaUser.setText("Olá, " + Main.getLogin().getUsuario().getNome());
 		} else {
 			lblOlaUser.setText("Olá, Visitante");
 		}

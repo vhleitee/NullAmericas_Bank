@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import enums.TipoOperacaoBD;
 import model.BD;
 import model.Cliente;
 import model.Conta;
@@ -146,5 +147,45 @@ public class ContaDAO {
 		}
     	
     }
+    
+    public String atualizar(TipoOperacaoBD operacao) {
+        msg = "Operação realizada com sucesso!";
+        
+        try {
+            if (operacao == TipoOperacaoBD.INCLUSAO) {
+                
+                sql = "INSERT INTO `nullamericas_bank`.`conta` (`idUser`) VALUES (?)";
+                  
+                statement = bd.connection.prepareStatement(sql);
+                statement.setInt(1, conta.getCliente().getId());
+                
+            } else if (operacao == TipoOperacaoBD.EXCLUSAO) {
+                
+                sql = "DELETE FROM `nullamericas_bank`.`conta` WHERE `id` = ?";
+                
+                statement = bd.connection.prepareStatement(sql);
+                statement.setInt(1, conta.getId()); 
+                
+            } else if (operacao == TipoOperacaoBD.ALTERACAO) {
+            
+                sql = "UPDATE `nullamericas_bank`.`conta` SET `idUser` = ? WHERE `id` = ?";
+                
+                statement = bd.connection.prepareStatement(sql);
+                statement.setInt(1, conta.getCliente().getId());
+                statement.setInt(2, conta.getId()); 
+                
+            }
+            
+            if (statement.executeUpdate() == 0) {
+                msg = "Falha na operação!";
+            }
+            
+        } catch (SQLException erro) {
+            msg = "Falha na operação - " + erro.toString();
+        }
+
+        return msg;
+    }
+    
 
 }

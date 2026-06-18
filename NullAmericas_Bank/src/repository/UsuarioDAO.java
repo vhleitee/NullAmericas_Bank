@@ -113,9 +113,38 @@ public class UsuarioDAO {
 	            
 	    	} else if (operacao == TipoOperacaoBD.EXCLUSAO) {
 	    		
+	            sql = "DELETE FROM `nullamericas_bank`.`users` WHERE `id` = ?";
+	            
+	            statement = bd.connection.prepareStatement(sql);
+	            statement.setInt(1, usuario.getId()); 
+	            
 	    	} else if (operacao == TipoOperacaoBD.ALTERACAO) {
 	    	
+	            sql = "UPDATE `nullamericas_bank`.`users` SET "
+	                + "`nome` = ?, `pais` = ?, `estado` = ?, `cidade` = ?, `rua` = ?, "
+	                + "`numero` = ?, `complemento` = ?, `cep` = ?, `documento` = ?, `tipoDocumento` = ? "
+	                + "WHERE `id` = ?";
+	            
+	            statement = bd.connection.prepareStatement(sql);
+	            statement.setString(1, usuario.getNome());
+	            statement.setString(2, usuario.getEndereco().getPais());
+	            statement.setString(3, usuario.getEndereco().getEstado());
+	            statement.setString(4, usuario.getEndereco().getCidade());
+	            statement.setString(5, usuario.getEndereco().getRua());
+	            statement.setInt(6, usuario.getEndereco().getNumero());
+	            statement.setString(7, usuario.getEndereco().getComplemento());
+	            statement.setString(8, usuario.getEndereco().getCep());
+	            statement.setString(9, usuario.getDocumento());
+	            statement.setString(10, usuario.getTipoDocumento());
+	            
+	            statement.setInt(11, usuario.getId()); 
+	            
 	    	}
+	    	
+            if (statement.executeUpdate() == 0) {
+                msg = "Falha na operação!";
+            }
+	    	
     	}catch (SQLException erro) {
             msg = "Falha na operação - " + erro.toString();
         }

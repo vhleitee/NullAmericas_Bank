@@ -74,22 +74,26 @@ CREATE TABLE `transacao` (
 -- 5. INSERÇÃO DOS DADOS (FICTÍCIOS)
 -- ==========================================
 
--- Inserção na tabela users
-INSERT INTO `users` (`id`, `nome`, `pais`, `estado`, `cidade`, `rua`, `numero`, `complemento`, `cep`, `documento`, `tipoDocumento`) VALUES 
-(1, 'Vitor', 'Brasil', 'SC', 'Ascurra', 'teste', 1234, '321', '89138-000', '63447156007', 'CPF'),
-(2, 'Franz', 'Brasil', 'SC', 'Ascurra', 'teste', 5489, '3453', '89138-000', '23914430000114', 'CNPJ');
+INSERT INTO `users` VALUES 
+(6,'Daniel Vorcaro','2026-06-17 20:48:39','Brasil','DF','Brasilia','Lula da Silva',1313,'2222','89168000','11111111111','CPF'),
+(7,'Luiz Inacio Lula da Silva','2026-06-17 20:52:26','BR','DF','Brasilia','',0,'','0','22222222222','CPF'),
+(8,'Alexandre de Morais','2026-06-17 20:53:45','','','','',0,'','','33333333333','CPF'),
+(9,'Everton Pereira da Cruz','2026-06-17 21:03:33','Brasil','SC','Blumenau','',0,'','','44444444444','CPF');
 
--- Inserção na tabela login
-INSERT INTO `login` (`codigo`, `senha`, `tipoUsuario`, `idUser`) VALUES 
-('franz', '1234', 'FUNCIONARIO', 2),
-('vitor', '1234', 'USUARIO', 1);
+INSERT INTO `login` VALUES 
+(7,'vorcaro','123','FUNCIONARIO',6),
+(8,'lula','123','USUARIO',7),
+(9,'alexandre','123','USUARIO',8),
+(10,'everton','123','USUARIO',9);
 
--- Inserção na tabela conta
-INSERT INTO `conta` (`id`, `idUser`, `dataCadastro`) VALUES 
-(1, 1, '2026-06-05 21:05:00'),
-(2, 2, '2026-06-05 21:10:00');
+INSERT INTO `conta` VALUES 
+(8,7,'2026-06-17 20:56:37'),
+(9,8,'2026-06-17 20:56:44'),
+(10,9,'2026-06-17 21:04:00');
 
--- Inserção na tabela transacao
-INSERT INTO `transacao` (`idConta`, `idContaCorrespondente`, `valor`, `tipoTransacao`) VALUES 
-(1, 2, 150.00, 'DEPOSITO'),
-(2, 1, 50.50, 'SAQUE');
+INSERT INTO `transacao` VALUES 
+(69,8,8,'2026-06-17 20:57:07',150000,'DEPOSITO'),
+(70,8,9,'2026-06-17 21:01:00',-131000,'TRANSFERENCIA_ENVIADA'),
+(71,9,8,'2026-06-17 21:01:00',131000,'TRANSFERENCIA_RECEBIDA'),
+(72,8,10,'2026-06-17 21:04:47',-1313.13,'TRANSFERENCIA_ENVIADA'),
+(73,10,8,'2026-06-17 21:04:47',1313.13,'TRANSFERENCIA_RECEBIDA');

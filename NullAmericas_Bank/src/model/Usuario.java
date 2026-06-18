@@ -23,12 +23,6 @@ public abstract class Usuario {
 		this.endereco = endereco;
 	}
 	
-	public String toString() {
-		String texto = this.getId() + " - " + this.getNome() + " - " + this.getDataCadastro() +
-					   " - " + this.getDocumento() + " - " + this.getTipoDocumento();
-		return texto;
-	}
-	
 	public int getId() {
 		return id;
 	}
